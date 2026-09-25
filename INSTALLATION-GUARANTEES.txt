@@ -1,0 +1,21 @@
+KHORA EFFECTIF 0.8.0 — CONTRATO DE INSTALACIÓN
+
+ALCANCE
+Extensión Chrome para estadísticas, ganancias, estados y observabilidad de Effectif.
+La transcripción queda expresamente fuera de esta versión.
+
+GARANTÍAS
+1. No instala ni inicia el worker experimental de transcripción.
+2. No solicita permisos de micrófono ni acceso a audio de pestañas.
+3. No modifica audio, video, pistas, dispositivos o controles de Effectif.
+4. El único clic permitido es Connect tras validar el diálogo de llamada OPI.
+5. La telemetría de red registra ruta, método, tipo, estado y duración; nunca cuerpos.
+6. Contraseñas, tokens, cookies, claves y valores de formularios no se registran.
+7. IndexedDB conserva el historial a través de cierres y actualizaciones de la misma extensión.
+8. La exportación censura cualquier configuración secreta heredada.
+9. El módulo de transcripción permanece como código dormido, sin permisos ni interfaz.
+10. Ante fallo de observación, Auto-Answer y la plataforma no se modifican.
+
+ACTUALIZACIÓN
+Para conservar IndexedDB, recargue la misma entrada de la extensión. No elimine la entrada
+antes de actualizar. Una instalación con identidad distinta usa almacenamiento independiente.

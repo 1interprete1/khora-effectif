@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Effectif Auto-Answer</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <header><span>KHORA · EFFECTIF</span><h1>Auto-Answer</h1></header>
+      <section class="switch-row">
+        <div><strong>Contestador</strong><small>OPI · detector validado</small></div>
+        <label class="switch"><input id="enabled" type="checkbox"><i></i></label>
+      </section>
+      <section class="switch-row">
+        <div><strong>Observador</strong><small>Recolecta señales del sitio</small></div>
+        <label class="switch"><input id="observation" type="checkbox"><i></i></label>
+      </section>
+      <section class="telemetry-control">
+        <div class="telemetry-head"><div><strong>Observabilidad persistente</strong><small>IndexedDB · sobrevive reinicios y actualizaciones</small></div><b id="telemetryCount">Calculando…</b></div>
+        <label class="mini-switch"><span>Red: ruta, estado y duración; nunca cuerpos</span><input id="networkTelemetryEnabled" type="checkbox"></label>
+        <label class="mini-switch"><span>Rendimiento, recursos y salud de interfaz</span><input id="performanceTelemetryEnabled" type="checkbox"></label>
+        <label class="mini-switch"><span>Interacciones sin valores escritos</span><input id="interactionTelemetryEnabled" type="checkbox"></label>
+        <div class="telemetry-grid">
+          <label>RETENCIÓN (DÍAS)<input id="telemetryRetentionDays" type="number" min="7" max="730" step="1"></label>
+          <label>MÁX. EVENTOS<input id="telemetryMaxEvents" type="number" min="1000" max="1000000" step="1000"></label>
+          <label>HEARTBEAT (S)<input id="telemetryHeartbeatSeconds" type="number" min="10" max="300" step="5"></label>
+        </div>
+        <small id="telemetryMeta">Preparando base persistente…</small>
+      </section>
+      <section class="switch-row earnings-toggle">
+        <div><strong>Overlay de ganancias</strong><small>Estimado local en pesos · actualización a 50 ms</small></div>
+        <label class="switch"><input id="overlayEnabled" type="checkbox"><i></i></label>
+      </section>
+      <section class="timers">
+        <div><span>Sesión observada</span><b id="sessionTimer">00:00:00</b></div>
+        <div><span>Tiempo Online</span><b id="onlineTimer">00:00:00</b></div>
+        <div><span>Llamada actual</span><b id="callTimer">00:00:00</b></div>
+      </section>
+      <section class="metrics calls">
+        <div><span>Llamadas hoy</span><b id="callsToday">0</b></div>
+        <div><span>Perdidas</span><b id="missedToday">0</b></div>
+        <div><span>Minutos</span><b id="minutesToday">0.0</b></div>
+        <div><span>Ingreso USD</span><b id="earnedToday">US$0.00</b></div>
+        <div><span>Ingreso MXN</span><b id="earnedTodayMxn">MX$0.0000</b></div>
+      </section>
+      <button id="endCall" class="danger" disabled>Finalizar cronómetro de llamada</button>
+      <label class="label">Volumen <output id="volumeValue">80%</output>
+        <input id="volume" type="range" min="0" max="1" step="0.05">
+      </label>
+      <button id="sound">Probar sonido</button>
+      <div class="rates"><span>OPI <b>US$0.20/min</b></span><span>VRI <b>US$0.25/min</b></span></div>
+      <section class="exchange"><div><span>USD → MXN</span><b id="exchangeRate">Consultando…</b><small id="exchangeMeta">Tipo de cambio automático</small></div><button id="refreshExchange" class="secondary compact">Actualizar</button></section>
+      <small>Estimación local: prorrateo por segundo. El monto oficial puede variar por reglas de redondeo de la plataforma.</small>
+      <section class="last"><span>Último evento</span><b id="last">Sin eventos</b></section>
+      <section class="official">
+        <div class="official-head">
+          <div><span class="label">DATOS OFICIALES VISIBLES</span><small>Solo para cotejo cuando visites esas pantallas; el cálculo local no requiere abrir Statistics.</small></div>
+          <button id="refresh" class="secondary compact">Actualizar</button>
+        </div>
+        <nav class="quick">
+          <button data-open="logs" class="secondary">Statistics</button>
+          <button data-open="logs/scheduled" class="secondary">Pre-Scheduled</button>
+          <button data-open="appointments" class="secondary">Appointments</button>
+        </nav>
+        <div id="officialData"><small>Aún no hay pantallas sincronizadas.</small></div>
+      </section>
+      <button id="export" class="secondary">Exportar historial persistente completo</button>
+      <p id="status" role="status"></p>
+    </main>
+    <script src="telemetry-db.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

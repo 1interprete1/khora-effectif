@@ -1,0 +1,6 @@
+faster-whisper==1.2.1
+ctranslate2==4.8.2
+httpx==0.28.1
+numpy>=1.26,<3
+soundcard==0.4.6
+websockets==15.0.1

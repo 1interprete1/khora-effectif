@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "minimum_chrome_version": "116",
+  "name": "Khora · Effectif Auto-Answer",
+  "version": "0.8.0",
+  "description": "Auto-Answer, estadísticas, ganancias MXN y observabilidad persistente no invasiva para Effectif.",
+  "permissions": [
+    "storage",
+    "tabs",
+    "offscreen",
+    "alarms",
+    "unlimitedStorage",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "https://app.cloudinterpreter.com/*",
+    "https://api.frankfurter.app/*",
+    "https://api.frankfurter.dev/*",
+    "https://open.er-api.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://app.cloudinterpreter.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_title": "Effectif Auto-Answer",
+    "default_popup": "popup.html"
+  },
+  "commands": {
+    "toggle-auto-answer": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+9"
+      },
+      "description": "Activar o desactivar Auto-Answer"
+    }
+  }
+}

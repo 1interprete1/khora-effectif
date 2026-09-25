@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Khora · Transcripción</title>
+    <link rel="stylesheet" href="sidepanel.css">
+  </head>
+  <body>
+    <header>
+      <span>KHORA · EFFECTIF</span>
+      <h1>Transcripción en vivo</h1>
+      <div class="status-grid">
+        <div><i id="workerDot"></i><b>Motor</b><span id="workerStatus">Sin conexión</span></div>
+        <div><i id="platformDot" class="ok"></i><b>Effectif</b><span>Sin modificaciones</span></div>
+        <div><i id="engineDot"></i><b>Motor activo</b><span id="engineStatus">Esperando</span></div>
+      </div>
+    </header>
+    <main>
+      <section>
+        <div class="section-head"><h2>Cliente</h2><span id="clientLatency">—</span></div>
+        <div id="client" class="transcript"><p class="empty">Esperando voz…</p></div>
+      </section>
+      <section>
+        <div class="section-head"><h2>Intérprete</h2><span id="interpreterLatency">—</span></div>
+        <div id="interpreter" class="transcript"><p class="empty">Esperando voz…</p></div>
+      </section>
+    </main>
+    <footer>
+      <div><span>Fragmentos</span><b id="segments">0</b></div>
+      <div><span>Atraso</span><b id="queue">0</b></div>
+      <div><span>Groq</span><b id="groqCost">$0.0000</b></div>
+      <button id="clear">Limpiar pantalla</button>
+      <p>Texto y audio efímeros: no se guardan.</p>
+    </footer>
+    <script src="sidepanel.js"></script>
+  </body>
+</html>
